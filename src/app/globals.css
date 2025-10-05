@@ -5,35 +5,51 @@ All colors MUST be HSL.
 */
 
 :root {
+  /* Agency Brand Colors - Based on Design Reference */
   --background: 0 0% 100%;
-  --foreground: 222.2 84% 4.9%;
+  --foreground: 217 32% 17%;
 
   --card: 0 0% 100%;
-  --card-foreground: 222.2 84% 4.9%;
+  --card-foreground: 217 32% 17%;
 
   --popover: 0 0% 100%;
-  --popover-foreground: 222.2 84% 4.9%;
+  --popover-foreground: 217 32% 17%;
 
-  --primary: 222.2 47.4% 11.2%;
-  --primary-foreground: 210 40% 98%;
+  /* Deep Navy Blue Primary */
+  --primary: 217 91% 20%;
+  --primary-foreground: 0 0% 100%;
 
-  --secondary: 210 40% 96.1%;
-  --secondary-foreground: 222.2 47.4% 11.2%;
+  /* Light Gray Secondary */
+  --secondary: 220 14% 96%;
+  --secondary-foreground: 217 32% 17%;
 
-  --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
+  --muted: 220 14% 96%;
+  --muted-foreground: 215 16% 47%;
 
-  --accent: 210 40% 96.1%;
-  --accent-foreground: 222.2 47.4% 11.2%;
+  /* Bright Orange Accent */
+  --accent: 25 95% 53%;
+  --accent-foreground: 0 0% 100%;
 
   --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 210 40% 98%;
+  --destructive-foreground: 0 0% 100%;
 
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
-  --ring: 222.2 84% 4.9%;
+  --border: 220 13% 91%;
+  --input: 220 13% 91%;
+  --ring: 217 91% 20%;
 
-  --radius: 0.5rem;
+  --radius: 0.75rem;
+
+  /* Agency Specific Colors */
+  --navy-blue: 217 91% 20%;
+  --bright-orange: 25 95% 53%;
+  --light-gray: 220 14% 96%;
+  --medium-gray: 215 16% 47%;
+  --dark-text: 217 32% 17%;
+
+  /* Gradient Colors */
+  --gradient-start: 240 100% 60%;
+  --gradient-middle: 259 100% 65%;
+  --gradient-end: 280 100% 70%;
 
   --sidebar-background: 0 0% 98%;
   --sidebar-foreground: 240 5.3% 26.1%;
@@ -160,4 +176,128 @@ All colors MUST be HSL.
 body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
+}
+
+/* Agency Specific Styles */
+.gradient-hero {
+  background: linear-gradient(135deg,
+    hsl(var(--gradient-start)) 0%,
+    hsl(var(--gradient-middle)) 50%,
+    hsl(var(--gradient-end)) 100%);
+}
+
+.text-navy {
+  color: hsl(var(--navy-blue));
+}
+
+.text-orange {
+  color: hsl(var(--bright-orange));
+}
+
+.bg-orange {
+  background-color: hsl(var(--bright-orange));
+}
+
+.bg-navy {
+  background-color: hsl(var(--navy-blue));
+}
+
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.animate-counter {
+  font-variant-numeric: tabular-nums;
+}
+
+.smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+/* Button Styles */
+.btn-primary {
+  background-color: hsl(var(--bright-orange));
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: hsl(25 95% 48%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(255, 140, 0, 0.3);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 2px solid hsl(var(--bright-orange));
+  color: hsl(var(--bright-orange));
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: hsl(var(--bright-orange));
+  color: white;
+}
+
+/* Responsive Design Enhancements */
+@media (max-width: 768px) {
+  .gradient-hero {
+    min-height: 80vh;
+  }
+
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .hover-lift:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .gradient-hero {
+    min-height: 70vh;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    text-align: center;
+  }
+
+  .grid.grid-cols-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+  .hover-lift,
+  .btn-primary,
+  .btn-secondary {
+    transition: none;
+  }
+
+  .smooth-scroll {
+    scroll-behavior: auto;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .gradient-hero {
+    background: white;
+    color: black;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    display: none;
+  }
 }
